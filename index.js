@@ -13,7 +13,7 @@ passport.use(
     callbackURL: '/auth/google/callback'
   },
   (accessToken, refreshToken, profile) => {
-    console.log(accessToken, refreshToken, profile);
+    console.log(accessToken);
   }
   )
 );
@@ -31,4 +31,4 @@ app.get(
 )
 
 const PORT = process.env.PORT || 5000;
-app.listen(PORT, () => console.log('listening...'));
+app.listen(PORT);
