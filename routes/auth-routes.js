@@ -13,7 +13,17 @@ module.exports = function(app) {
     passport.authenticate('google')
   );
 
-  app.get('/api/currentUser', (req, res) => {
-    res.send(req.user);
+  app.get('/api/logout', (req, res) => {
+    if (req.user) {
+      req.logout();
+      res.send(`You have been logged out.`);
+    } else {
+      res.send('No authenticated user was found. Unable to logout.')
+    }
+    req.logout();
+  });
+
+  app.get('/api/current-user', (req, res) => {
+    req.user ? res.send(req.user) : res.send('You are not authenticated.');
   });
 }
