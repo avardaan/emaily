@@ -1,6 +1,6 @@
 const passport = require('passport');
 const GoogleStrategy = require('passport-google-oauth20').Strategy;
-const secrets = require('../config/secrets');
+const keys = require('../config/keys');
 const mongoose = require('mongoose');
 
 const User = mongoose.model('users');
@@ -22,8 +22,8 @@ passport.deserializeUser((id, done) => {
 passport.use(
   new GoogleStrategy(
   {
-    clientID: secrets.googleOauth.clientID,
-    clientSecret: secrets.googleOauth.clientSecret,
+    clientID: keys.googleOauth.clientID,
+    clientSecret: keys.googleOauth.clientSecret,
     callbackURL: '/auth/google/callback'
   },
   // callback is run after passport receives code from google (once the user allows),
