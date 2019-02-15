@@ -24,7 +24,8 @@ passport.use(
   {
     clientID: keys.googleOauth.clientID,
     clientSecret: keys.googleOauth.clientSecret,
-    callbackURL: '/auth/google/callback'
+    callbackURL: '/auth/google/callback',
+    proxy: true
   },
   // callback is run after passport receives code from google (once the user allows),
   // and uses it to fetch an access token
