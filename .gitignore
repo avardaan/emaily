@@ -1,5 +1,3 @@
 node_modules/
-# ignore keys
-config/keys/**
-# don't ignore prod keys
-!/config/keys/prod.js
+# ignore dev keys
+config/keys/dev.js
