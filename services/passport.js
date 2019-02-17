@@ -29,19 +29,14 @@ passport.use(
   },
   // callback is run after passport receives code from google (once the user allows),
   // and uses it to fetch an access token
-  (accessToken, refreshToken, profile, done) => {
-    User.findOne({ googleId: profile.id })
-    .then((existingUser) => {
-      if (existingUser) {
-        console.log('The user you are trying to create already exists');
-        done(null, existingUser);
-      } else {
-        new User({ googleId: profile.id })
-        .save()
-        .then((newUser) => done(null, newUser))
-
-      }
-    })
-  }
-  )
+  async (accessToken, refreshToken, profile, done) => {
+    const existingUser = await User.findOne({ googleId: profile.id });
+    if (existingUser) {
+      console.log('The user you are trying to create already exists');
+      done(null, existingUser);
+    } else {
+      const newUser = await new User({ googleId: profile.id }).save();
+      done(null, newUser);
+    }
+  })
 );
