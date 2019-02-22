@@ -24,6 +24,6 @@ module.exports = function(app) {
   });
 
   app.get('/api/current-user', (req, res) => {
-    req.user ? res.send(req.user) : res.send('You are not authenticated.');
+    req.user ? res.send(req.user) : res.send(false);
   });
 }
