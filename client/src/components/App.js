@@ -1,6 +1,8 @@
 import React from 'react';
 import { BrowserRouter, Route } from 'react-router-dom';
+import { connect } from 'react-redux';
 import Header from './header/header';
+import { authActions } from '../actions/auth-actions/index'
 import 'materialize-css/dist/css/materialize.min.css';
 
 
@@ -8,9 +10,19 @@ const Dashboard = () => <h2>Dashboard</h2>;
 const SurveyNew = () => <h2>SurveyNew</h2>;
 const Landing = () => <h2>Landing</h2>;
 
-const App = () => {
-  return (
-    <div className="container">
+class App extends React.Component {
+  constructor(props) {
+    super(props);
+  }
+
+  componentDidMount() {
+    this.props.fetchUser();
+  }
+  
+
+  render() {
+    return (
+      <div className="container">
       <BrowserRouter>
         <div>
           <Header />
@@ -20,7 +32,8 @@ const App = () => {
         </div>
       </BrowserRouter>
     </div>
-  )
+    )
+  }
 }
 
-export default App;
+export default connect(null, authActions)(App);
