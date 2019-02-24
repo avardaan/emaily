@@ -1,2 +1,3 @@
 import * as authActions from './creators';
-export { authActions };
+import * as authActionsTypes from './types';
+export { authActions, authActionsTypes };

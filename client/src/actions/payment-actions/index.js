@@ -1,2 +1,3 @@
 import * as paymentActions from './creators';
-export { paymentActions };
+import * as paymentsActionsTypes from './types';
+export { paymentActions, paymentsActionsTypes };
