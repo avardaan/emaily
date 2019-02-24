@@ -1,4 +1,5 @@
 import React from 'react';
+import { StripeCheckoutComponent } from './stripe-checkout';
 
 export class HeaderComponent extends React.Component {
 
@@ -13,9 +14,10 @@ export class HeaderComponent extends React.Component {
         </li>;
     
       default:
-        return <li>
-          <a href="/api/logout">Logout</a>
-        </li>
+        return [
+        <li key="0"><StripeCheckoutComponent /></li>,
+        <li key="1"><a href="/api/logout">Logout</a></li>
+        ];
     }
   }
 
