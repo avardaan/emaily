@@ -1,2 +1,2 @@
 export * from './auth-actions';
-export * from './payment-actions';
+export * from './payments-actions';
