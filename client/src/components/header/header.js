@@ -4,7 +4,7 @@ import { StripeCheckoutComponent } from './stripe-checkout';
 export class HeaderComponent extends React.Component {
 
   renderContent() {
-    switch (this.props.auth) {
+    switch (this.props.user) {
       case null:
         return;
       
@@ -22,7 +22,7 @@ export class HeaderComponent extends React.Component {
   }
 
   logoLink() {
-    return this.props.auth ? '/surveys' : '/';
+    return this.props.user ? '/surveys' : '/';
   }
 
   render() {

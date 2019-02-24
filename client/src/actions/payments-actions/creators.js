@@ -3,9 +3,9 @@ import axios from 'axios';
 
 export const handleToken = (token) =>
   async (dispatch) => {
-    const credits = await axios.post('/api/stripe', token);
+    const res = await axios.post('/api/stripe', token);
     dispatch({
       type: HANDLE_TOKEN,
-      payload: credits
+      payload: res.data
     });
 }

@@ -4,7 +4,7 @@ import { paymentsActions } from '../../actions';
 
 const mapStateToProps = (state) => {
   return {
-    auth: state.auth
+    user: state.user
   }
 }
 
