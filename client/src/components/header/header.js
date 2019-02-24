@@ -19,11 +19,15 @@ export class HeaderComponent extends React.Component {
     }
   }
 
+  logoLink() {
+    return this.props.auth ? '/surveys' : '/';
+  }
+
   render() {
     return (
       <nav>
         <div className="nav-wrapper">
-          <a className="left brand-logo" href="/">
+          <a className="left brand-logo" href={this.logoLink()}>
             Emaily
           </a>
           <ul className="right">
