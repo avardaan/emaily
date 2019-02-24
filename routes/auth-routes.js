@@ -10,17 +10,19 @@ module.exports = function(app) {
   
   app.get(
     '/auth/google/callback',
-    passport.authenticate('google')
+    passport.authenticate('google'),
+    (req, res) => {
+      /* redirect method redirects client to the specified route */
+      res.redirect('/surveys');
+    }
   );
 
   app.get('/api/logout', (req, res) => {
     if (req.user) {
       req.logout();
-      res.send(`You have been logged out.`);
-    } else {
-      res.send('No authenticated user was found. Unable to logout.')
+      res.redirect('/');
     }
-    req.logout();
+      
   });
 
   app.get('/api/current-user', (req, res) => {
