@@ -3,7 +3,13 @@ const stripe = require('stripe')(keys.stripe.secretKey);
 
 module.exports = (app) => {
   
-  app.post('/api/stripe', (req, res) => {
-
+  app.post('/api/stripe', async (req, res) => {
+    const charge = await stripe.charges.create({
+      amount: 500,
+      currency: 'usd',
+      description: 'Purchase 5 emaily credits',
+      source: req.body.id,
+    })
+    console.log(charge)
   });
 }
