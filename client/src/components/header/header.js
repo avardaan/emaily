@@ -16,7 +16,10 @@ export class HeaderComponent extends React.Component {
       default:
         return [
         <li key="0"><StripeCheckoutComponent handleToken={this.props.handleToken}/></li>,
-        <li key="1"><a href="/api/logout">Logout</a></li>
+        <li key="1" style={{ margin: '0 10px' }}>
+          Credits: {this.props.user.credits}
+        </li>,
+        <li key="2"><a href="/api/logout">Logout</a></li>
         ];
     }
   }
