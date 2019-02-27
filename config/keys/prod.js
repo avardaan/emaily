@@ -11,7 +11,7 @@ module.exports = {
     cookieKey: process.env.COOKIE_KEY
   },
   stripe: {
-    publishableKeys: process.env.STRIPE_PUBLISHABLE_KEY,
-    secretKeys: process.env.STRIPE_SECRET_KEY
+    publishableKey: process.env.STRIPE_PUBLISHABLE_KEY,
+    secretKey: process.env.STRIPE_SECRET_KEY
   }
 }
