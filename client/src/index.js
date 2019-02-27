@@ -6,7 +6,7 @@ import reduxThunk from 'redux-thunk';
 import { composeWithDevTools } from 'redux-devtools-extension';
 import reducers from './reducers';
 
-import App from './components/app';
+import App from './components/App';
 
 const store = () => {
   // enable redux devtools if not in prod env
