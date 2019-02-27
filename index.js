@@ -26,6 +26,7 @@ app.use(passport.session());
 // Authentication Route Handlers
 require('./routes/auth-routes')(app);
 require('./routes/billing-routes')(app);
+require('./routes/survey-routes')(app);
 
 if (process.env.NODE_ENV === 'production') {
   // express will serve up client production assets
