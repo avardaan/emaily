@@ -24,6 +24,5 @@ module.exports = (app) => {
       text: body
     }
     await sendMail(mail)
-    console.log('email sent!');
   });
 }
