@@ -1,0 +1,1 @@
+module.exports = '<div>Hello hi hi</div>'
