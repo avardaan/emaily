@@ -21,7 +21,7 @@ module.exports = (app) => {
       to: recipients,
       from: 'no-reply@emaily.com',
       subject,
-      text: 'Hello',
+      text: body
     }
     await sendMail(mail)
     console.log('email sent!');

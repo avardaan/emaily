@@ -6,7 +6,7 @@ async function sendMail(mail) {
   sendgridMail.setApiKey(keys.sendgrid.apiKey);
   const message = {
     ...mail,
-    html: emailTemplate
+    html: emailTemplate(mail.text)
   }
   await sendgridMail.send(message);
 }
