@@ -15,6 +15,7 @@ module.exports = {
     secretKey: process.env.STRIPE_SECRET_KEY
   },
   sendgrid: {
-    apiKey: process.env.SENDGRID_API_KEY
+    apiKey: process.env.SENDGRID_API_KEY,
+    redirectDomain: process.env.SENDGRID_REDIRECT_DOMAIN
   }
 }

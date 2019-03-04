@@ -1,3 +1,5 @@
+const keys = require('../config/keys');
+const redirectUrl = `${keys.sendgrid.redirectDomain}/api/surveys/thanks`
 module.exports = (text) => {
   return `
     <html>
@@ -7,10 +9,10 @@ module.exports = (text) => {
           <p>Please answer the following question:</p>
           <p>${text}</p>
           <div>
-            <a href="http://localhost:3000">Yes</a>
+            <a href="${redirectUrl}/">Yes</a>
           </div>
           <div>
-            <a href="http://localhost:3000">No</a>
+            <a href="${redirectUrl}">No</a>
           </div>
         </div>
       </body>

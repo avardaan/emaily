@@ -5,6 +5,10 @@ const sendMail = require('../services/mailer');
 const Survey = require('mongoose').model('surveys');
 
 module.exports = (app) => {
+  app.get('/api/surveys/thanks', (req, res) => {
+    res.send('Thank you for responding! :)');
+  });
+
   app.post('/api/surveys', requireLogin, requireCredits, async (req, res) => {
     const { title, subject, body, recipients } = req.body;
     const recipientsArray = recipients.split();
@@ -23,6 +27,19 @@ module.exports = (app) => {
       subject,
       text: body
     }
-    await sendMail(mail)
+    try {
+      // send emails using sendgrid helper
+      await sendMail(mail);
+      // save survey document to db
+      await survey.save();
+      // deduct credits
+      req.user.credits -= 1;
+      const { credits } = await req.user.save();
+      // send back updated credits
+      res.send({ credits });
+    } catch (err) {
+      res.status(422).send(err);
+    }
+    
   });
 }
