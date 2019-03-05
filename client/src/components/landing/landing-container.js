@@ -1,4 +1,4 @@
-import { LandingComponent } from './landing';
+import { Landing } from './landing';
 import { connect } from 'react-redux';
 
-export const LandingContainer = connect(null)(LandingComponent);
+export const LandingContainer = connect(null)(Landing);

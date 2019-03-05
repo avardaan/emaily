@@ -1,7 +1,7 @@
 import React from 'react';
 import { StripeCheckoutComponent } from './stripe-checkout';
 
-export class HeaderComponent extends React.Component {
+export class Header extends React.Component {
 
   renderContent() {
     switch (this.props.user) {

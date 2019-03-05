@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { HeaderComponent } from './header';
+import { Header } from './header';
 import { paymentsActions } from '../../actions';
 
 const mapStateToProps = (state) => {
@@ -8,4 +8,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export const HeaderContainer = connect(mapStateToProps, paymentsActions)(HeaderComponent);
+export const HeaderContainer = connect(mapStateToProps, paymentsActions)(Header);
