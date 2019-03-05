@@ -1,2 +1,2 @@
-import { Landing } from './landing-container';
-export default Landing;
+import { LandingContainer } from './landing-container';
+export default LandingContainer;

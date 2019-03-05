@@ -8,4 +8,4 @@ const mapStateToProps = (state) => {
   }
 }
 
-export const Header = connect(mapStateToProps, paymentsActions)(HeaderComponent);
+export const HeaderContainer = connect(mapStateToProps, paymentsActions)(HeaderComponent);
