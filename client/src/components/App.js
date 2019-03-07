@@ -4,10 +4,9 @@ import { connect } from 'react-redux';
 import Header from './header';
 import Landing from './landing';
 import Dashboard from './dashboard';
+import SurveyNew from './surveys';
 import { authActions } from '../actions/auth-actions/index'
 import 'materialize-css/dist/css/materialize.min.css';
-
-const SurveyNew = () => <h2>SurveyNew</h2>;
 
 class App extends React.Component {
 
