@@ -59,7 +59,20 @@ class SurveyFormComponent extends React.Component {
   }
 }
 
+const validationHelper = (values) => {
+  const errors = {};
+
+
+  if (!values.title) {
+    // if data invalid, errors.propertyName = errorMessage
+    // and field with name === propertyName gets error: errorMessage
+    errors.title = 'You must provide a title.'
+  };
+  return errors;
+};
+
 const reduxFormConfig = {
+  validate: validationHelper,
   form: 'surveyForm'
 };
 
