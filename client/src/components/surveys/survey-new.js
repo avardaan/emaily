@@ -1,6 +1,6 @@
 // SurveyNew shows SurveyForm and SurveyFormReview
 import React from 'react';
-import { SurveyForm } from './survey-form';
+import SurveyForm from './survey-form';
 import SurveyFormReview from './survey-form-review';
 export class SurveyNew extends React.Component {
   

@@ -2,26 +2,8 @@ import React from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { SurveyField } from './survey-field';
 import { Link } from 'react-router-dom';
-import { checkInvalidEmails } from '../../utils/input-validation';
-
-const FIELDS = [
-  {
-    name: 'title',
-    label: 'Survey Title'
-  },
-  {
-    name: 'subject',
-    label: 'Subject Line'
-  },
-  {
-    name: 'body',
-    label: 'Email Body'
-  },
-  {
-    name: 'emails',
-    label: 'Recipient List'
-  },
-]
+import { checkInvalidEmails } from '../../../utils/input-validation';
+import { FIELDS } from '../form-fields';
 
 class SurveyFormComponent extends React.Component {
 
