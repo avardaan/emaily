@@ -25,6 +25,9 @@ const FIELDS = [
 
 class SurveyFormComponent extends React.Component {
 
+  // bind handleSubmit
+  handleSubmit = this.handleSubmit.bind(this);
+
   renderFields() {
     return FIELDS.map((field) => {
       return (
@@ -39,7 +42,7 @@ class SurveyFormComponent extends React.Component {
   }
 
   handleSubmit(values) {
-    console.log(values);
+    this.props.onSurveySubmit();
   }
 
   render() {
