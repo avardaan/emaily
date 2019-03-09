@@ -2,7 +2,6 @@
 import React from 'react';
 
 export const SurveyField = ({ input, label, meta: { error, touched } }) => {
-  console.log(input)
   return (
     <div>
       <label>{label}</label>

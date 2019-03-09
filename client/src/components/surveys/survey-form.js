@@ -2,6 +2,7 @@ import React from 'react';
 import { reduxForm, Field } from 'redux-form';
 import { SurveyField } from './survey-field';
 import { Link } from 'react-router-dom';
+import { checkInvalidEmails } from '../../utils/input-validation';
 
 const FIELDS = [
   {
@@ -61,13 +62,15 @@ class SurveyFormComponent extends React.Component {
 
 const validationHelper = (values) => {
   const errors = {};
+  // if data invalid, errors.propertyName = errorMessage
+  // and field with name === propertyName gets error: errorMessage
+  errors.emails = values.emails ? checkInvalidEmails(values.emails) : null;
 
-
-  if (!values.title) {
-    // if data invalid, errors.propertyName = errorMessage
-    // and field with name === propertyName gets error: errorMessage
-    errors.title = 'You must provide a title.'
-  };
+  FIELDS.forEach(({ name }) => {
+    if (!values[name]) {
+      errors[name] = 'You must provide a value.';
+    }
+  });
   return errors;
 };
 
