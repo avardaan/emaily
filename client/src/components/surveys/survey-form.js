@@ -79,6 +79,7 @@ const validationHelper = (values) => {
 
 const reduxFormConfig = {
   validate: validationHelper,
+  destroyOnUnmount: false,
   form: 'surveyForm'
 };
 
