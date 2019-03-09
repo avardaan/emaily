@@ -11,8 +11,9 @@ export class SurveyNew extends React.Component {
 
   renderContent() {
     const navigateToFormReview = () => this.setState({ showFormReview: true });
+    const navigateBackToForm = () => this.setState({ showFormReview: false });
     return this.state.showFormReview ?
-      <SurveyFormReview /> :
+      <SurveyFormReview onCancel={navigateBackToForm}/> :
       <SurveyForm onSurveySubmit={navigateToFormReview} />;
   }
 
