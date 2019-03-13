@@ -49,7 +49,7 @@ const validationHelper = (values) => {
   const errors = {};
   // if data invalid, errors.propertyName = errorMessage
   // and field with name === propertyName gets error: errorMessage
-  errors.emails = values.emails ? checkInvalidEmails(values.emails) : null;
+  errors.recipients = values.emails ? checkInvalidEmails(values.recipients) : null;
 
   FIELDS.forEach(({ name }) => {
     if (!values[name]) {

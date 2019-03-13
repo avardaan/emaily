@@ -12,7 +12,7 @@ export const FIELDS = [
     label: 'Email Body'
   },
   {
-    name: 'emails',
+    name: 'recipients',
     label: 'Recipient List'
   },
 ]
