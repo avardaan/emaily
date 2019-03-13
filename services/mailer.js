@@ -9,7 +9,6 @@ async function sendMail(mail) {
     html: emailTemplate(mail.text)
   }
   await sendgridMail.send(message);
-  console.log('email sent!', message);
 }
 
 module.exports = sendMail;
