@@ -17,6 +17,11 @@ const renderFields = (fields, formValues) => {
 }
 
 export const SurveyFormReview = (props) => {
+
+  const submitSurvey = () => {
+    props.submitSurvey(props.formValues);
+  };
+
   return (
     <div>
       <h5>Please confirm your entries</h5>
@@ -29,6 +34,7 @@ export const SurveyFormReview = (props) => {
       </button>
       <button
         className="green btn-flat white-text right"
+        onClick={submitSurvey}
       >
         Send Survey
         <i className="material-icons right">email</i>

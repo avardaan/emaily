@@ -1,5 +1,6 @@
 import { SurveyFormReview } from './survey-form-review';
 import { connect } from 'react-redux';
+import { formActions } from '../../../actions'
 
 const mapStateToProps = (state, ownProps) => {
   return {
@@ -8,4 +9,4 @@ const mapStateToProps = (state, ownProps) => {
   };
 }
 
-export const SurveyFormReviewContainer = connect(mapStateToProps)(SurveyFormReview);
+export const SurveyFormReviewContainer = connect(mapStateToProps, formActions)(SurveyFormReview);
