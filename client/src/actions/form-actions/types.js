@@ -1,0 +1,1 @@
+export const SUBMIT_SURVEY = 'SUBMIT_SURVEY';
