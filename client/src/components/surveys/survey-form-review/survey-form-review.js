@@ -1,5 +1,6 @@
 import React from 'react';
 import { FIELDS } from '../form-fields';
+import { withRouter } from 'react-router-dom';
 
 // function will take in FIELDS array to get label and
 // formValues from redux to get value submitted by user
@@ -16,10 +17,10 @@ const renderFields = (fields, formValues) => {
   })
 }
 
-export const SurveyFormReview = (props) => {
+export const SurveyFormReviewWithoutRouter = (props) => {
 
   const submitSurvey = () => {
-    props.submitSurvey(props.formValues);
+    props.submitSurvey(props.formValues, props.history);
   };
 
   return (
@@ -41,4 +42,6 @@ export const SurveyFormReview = (props) => {
       </button>
     </div>
   )
-}
+};
+
+export const SurveyFormReview = withRouter(SurveyFormReviewWithoutRouter);
