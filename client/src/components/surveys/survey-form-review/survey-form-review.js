@@ -22,10 +22,16 @@ export const SurveyFormReview = (props) => {
       <h5>Please confirm your entries</h5>
       {renderFields(FIELDS, props.formValues)}
       <button
-        className="yellow darken-3 btn-flat"
+        className="yellow white-text darken-3 btn-flat"
         onClick={props.onCancel}
       >
         Back
+      </button>
+      <button
+        className="green btn-flat white-text right"
+      >
+        Send Survey
+        <i className="material-icons right">email</i>
       </button>
     </div>
   )
