@@ -5,7 +5,7 @@ import { Link } from 'react-router-dom';
 import { checkInvalidEmails } from '../../../utils/input-validation';
 import { FIELDS } from '../form-fields';
 
-class SurveyFormComponent extends React.Component {
+class SurveyFormComponent extends React.PureComponent {
 
   // bind handleSubmit
   handleSubmit = this.handleSubmit.bind(this);

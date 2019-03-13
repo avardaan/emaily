@@ -1,7 +1,7 @@
 import React from 'react';
 import StripeCheckout from 'react-stripe-checkout';
 
-export class StripeCheckoutComponent extends React.Component {
+export class StripeCheckoutComponent extends React.PureComponent {
   render() {
     return (
       <StripeCheckout
