@@ -31,7 +31,8 @@ module.exports = (app) => {
       to: recipients,
       from: 'no-reply@emaily.com',
       subject,
-      text: body
+      text: body,
+      surveyId: survey.id
     }
     try {
       // send emails using sendgrid helper

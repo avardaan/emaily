@@ -1,6 +1,6 @@
 const keys = require('../config/keys');
-const redirectUrl = `${keys.sendgrid.redirectDomain}/api/surveys/thanks`
-module.exports = (text) => {
+module.exports = (text, surveyId) => {
+  const redirectUrl = `${keys.sendgrid.redirectDomain}/api/surveys/${surveyId}`
   return `
     <html>
       <body>
@@ -9,10 +9,10 @@ module.exports = (text) => {
           <p>Please answer the following question:</p>
           <p>${text}</p>
           <div>
-            <a href="${redirectUrl}/">Yes</a>
+            <a href="${redirectUrl}/yes">Yes</a>
           </div>
           <div>
-            <a href="${redirectUrl}">No</a>
+            <a href="${redirectUrl}/no">No</a>
           </div>
         </div>
       </body>
