@@ -1,5 +1,6 @@
-# ignore vscode settings
+# ignore personal config files
 .vscode
+.prettierrc
 # ignore node modules
 node_modules/
 # ignore dev keys
