@@ -1,6 +1,9 @@
 const requireLogin = require('../middlewares/require-login');
 const requireCredits = require('../middlewares/require-credits');
 const sendMail = require('../services/mailer');
+const _ = require('lodash');
+const Path = require('path-parser').default;
+const URL = require('url').URL;
 
 const Survey = require('mongoose').model('surveys');
 
@@ -11,9 +14,23 @@ module.exports = (app) => {
   });
 
   app.post('/api/surveys/webhooks', (req, res) => {
-    console.log(req.body);
+    const events = _.map(req.body, (event) => {
+      const pathname = new URL(event.url).pathname;
+      const pathParser = new Path('/api/surveys/:surveyId/:choice');
+      // if pathParser is not able to extract both surveyId AND choice from path, it returns null
+      const match = pathParser.test(pathname);
+      if (match) {
+        return {
+          email: event.email,
+          ...match // surveyId and choice
+        };
+      }
+    });
+    // remove undefined and duplicates
+    const uniqueEvents = _.uniqBy(_.compact(events), 'email', 'surveyId');
+    console.log(uniqueEvents);
     res.send({});
-  })
+  });
 
   app.post('/api/surveys', requireLogin, requireCredits, async (req, res) => {
     const { title, subject, body, recipients } = req.body;
