@@ -8,7 +8,6 @@ const URL = require('url').URL;
 const Survey = require('mongoose').model('surveys');
 
 module.exports = (app) => {
-  
   app.get('/api/surveys/thanks', (req, res) => {
     res.send('Thank you for responding! :)');
   });
@@ -26,15 +25,14 @@ module.exports = (app) => {
           ...match // surveyId and choice
         };
       }
-    }
+    };
 
     const events = _.chain(req.body)
-    .map(mapHelper)
-    .compact()
-    .uniqBy('email', 'surveyId')
-    .value();
+      .map(mapHelper)
+      .compact()
+      .uniqBy('email', 'surveyId')
+      .value();
 
-    
     // remove undefined and duplicates
     console.log(events);
     res.send({});
@@ -46,7 +44,9 @@ module.exports = (app) => {
 
     // create survey object from request body
     const survey = new Survey({
-      title, subject, body,
+      title,
+      subject,
+      body,
       recipients: recipientsArray.map((email) => ({ email: email.trim() })),
       _user: req.user.id,
       dateSent: Date.now()
@@ -58,7 +58,7 @@ module.exports = (app) => {
       subject,
       text: body,
       surveyId: survey.id
-    }
+    };
     try {
       // send emails using sendgrid helper
       await sendMail(mail);
@@ -72,6 +72,5 @@ module.exports = (app) => {
     } catch (err) {
       res.status(422).send(err);
     }
-    
   });
-}
+};
