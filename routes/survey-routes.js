@@ -14,21 +14,29 @@ module.exports = (app) => {
   });
 
   app.post('/api/surveys/webhooks', (req, res) => {
-    const events = _.map(req.body, (event) => {
-      const pathname = new URL(event.url).pathname;
-      const pathParser = new Path('/api/surveys/:surveyId/:choice');
+    const pathParser = new Path('/api/surveys/:surveyId/:choice');
+
+    // extract relevant information
+    const mapHelper = (event) => {
       // if pathParser is not able to extract both surveyId AND choice from path, it returns null
-      const match = pathParser.test(pathname);
+      const match = pathParser.test(new URL(event.url).pathname);
       if (match) {
         return {
           email: event.email,
           ...match // surveyId and choice
         };
       }
-    });
+    }
+
+    const events = _.chain(req.body)
+    .map(mapHelper)
+    .compact()
+    .uniqBy('email', 'surveyId')
+    .value();
+
+    
     // remove undefined and duplicates
-    const uniqueEvents = _.uniqBy(_.compact(events), 'email', 'surveyId');
-    console.log(uniqueEvents);
+    console.log(events);
     res.send({});
   });
 
