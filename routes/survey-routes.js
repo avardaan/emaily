@@ -8,7 +8,7 @@ const URL = require('url').URL;
 const Survey = require('mongoose').model('surveys');
 
 module.exports = (app) => {
-  app.get('/api/surveys/thanks', (req, res) => {
+  app.get('/api/surveys/:surveyId/:choice', (req, res) => {
     res.send('Thank you for responding! :)');
   });
 
