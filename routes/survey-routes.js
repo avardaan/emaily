@@ -27,13 +27,28 @@ module.exports = (app) => {
       }
     };
 
-    const events = _.chain(req.body)
-      .map(mapHelper)
-      .compact()
-      .uniqBy('email', 'surveyId')
-      .value();
+    const surveyResponseMongoQuery = (event) => {
+      Survey.updateOne(
+        {
+          _id: event.surveyId,
+          recipients: {
+            $elemMatch: { email: event.email, responded: false }
+          }
+        },
+        {
+          $set: { 'recipients.$.responded': true },
+          $inc: { [`responses.${event.choice}`]: 1 }
+        }
+      ).exec();
+    };
 
-    // remove undefined and duplicates
+    const events = _.chain(req.body)
+      .map(mapHelper) // return events with survey response url format
+      .compact() // remove undefined
+      .uniqBy('email', 'surveyId') // remove duplicates
+      .each(surveyResponseMongoQuery)
+      .value(); // end chain, return final array
+
     console.log(events);
     res.send({});
   });
