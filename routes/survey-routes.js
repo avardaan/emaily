@@ -37,7 +37,8 @@ module.exports = (app) => {
         },
         {
           $set: { 'recipients.$.responded': true },
-          $inc: { [`responses.${event.choice}`]: 1 }
+          $inc: { [`responses.${event.choice}`]: 1 },
+          lastResponded: new Date()
         }
       ).exec();
     };
