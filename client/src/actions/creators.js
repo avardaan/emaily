@@ -1,7 +1,7 @@
-import { FETCH_USER } from './types';
+import { FETCH_USER, FETCH_SURVEYS, HANDLE_TOKEN } from './types';
 import axios from 'axios';
 
-export const fetchUser = () => 
+export const fetchUser = () =>
   /*
   redux-thunk middleware sits between returning an action from an action creator
   and sending it to the reducers. when it sees that the action created is not an object but a function,
@@ -17,4 +17,20 @@ export const fetchUser = () =>
       payload: user.data
     };
     dispatch(action);
-    }
+  };
+
+export const submitSurvey = (formValues, history) => async (dispatch) => {
+  const response = await axios.post('/api/surveys', formValues);
+  history.push('/surveys');
+  dispatch({ type: FETCH_USER, payload: response.data });
+};
+
+export const handleToken = (token) => async (dispatch) => {
+  const res = await axios.post('/api/stripe', token);
+  dispatch({ type: HANDLE_TOKEN, payload: res.data });
+};
+
+export const fetchSurveys = () => async (dispatch) => {
+  const res = await axios.get('/api/surveys');
+  dispatch({ type: FETCH_SURVEYS, payload: res.data });
+};
