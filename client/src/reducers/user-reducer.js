@@ -1,4 +1,4 @@
-import { FETCH_SURVEYS, FETCH_USER, HANDLE_TOKEN } from '../actions/types';
+import { FETCH_USER, HANDLE_TOKEN } from '../actions/types';
 
 const INITIAL_STATE = null;
 
