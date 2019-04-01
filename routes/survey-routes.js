@@ -50,7 +50,6 @@ module.exports = (app) => {
       .each(surveyResponseMongoQuery)
       .value(); // end chain, return final array
 
-    console.log(events);
     res.send({});
   });
 
